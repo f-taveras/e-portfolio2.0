@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Download, MapPin, Github, Linkedin, Twitter } from "lucide-react";
+import { Download, MapPin, Github, Linkedin } from "lucide-react";
 import { PROFILE, SOCIALS } from "../constants";
 
 export default function Hero() {
@@ -52,7 +52,6 @@ export default function Hero() {
               {[
                 { icon: Github, href: SOCIALS.github },
                 { icon: Linkedin, href: SOCIALS.linkedin },
-                { icon: Twitter, href: SOCIALS.twitter },
               ].map(({ icon: Icon, href }, index) => (
                 <motion.a
                   key={index}

@@ -1,150 +1,84 @@
-export const PROFILE = {
-  name: "Felix Taveras",
-  title: "Full-Stack Developer",
-  bio: "Crafting exceptional digital experiences with modern web technologies. Passionate about performance, accessibility, and user-centric design.",
-  availability: "Available for freelance",
-  email: "Felixataveras1@gmail.com",
-  location: "North Carolina, New York, Remote",
-  resumeUrl: "/resume.pdf",
-};
+import { 
+  Code2, 
+  Terminal, 
+  Database, 
+  Globe, 
+  Cpu, 
+  Layout, 
+  Workflow, // Changed from Server to Workflow for n8n
+  Container // For Docker
+} from 'lucide-react';
 
-export const SOCIALS = {
+export const PERSONAL_INFO = {
+  name: "Felix A. Taveras",
+  title: "Full Stack Developer & Automation Engineer",
+  bio: "U.S. Army Veteran and engineer who translates ambiguous business requirements into reliable, code-driven workflows. specialized in building TypeScript logic engines, self-hosted automation infrastructure (n8n/Docker), and scalable React systems.",
+  email: "Felixataveras1@gmail.com",
   github: "https://github.com/f-taveras",
-  linkedin: "https://linkedin.com/in/f-taveras",
+  linkedin: "https://linkedin.com/in/your-profile-link", // Update if you have one
+  resumeUrl: "/assets/Felix_Taveras_Resume.pdf", 
+  availability: "Open to Work",
 };
 
 export const TECH_STACK = [
-  { name: "TypeScript", icon: "typescript" },
-  { name: "JavaScript", icon: "javascript" },
-  { name: "Python", icon: "python" },
-  { name: "SQL", icon: "sql" },
-  { name: "Bash", icon: "bash" },
-  { name: "PowerShell", icon: "powershell" },
-  { name: "Next.js", icon: "nextjs" },
-  { name: "React", icon: "react" },
-  { name: "SvelteKit", icon: "svelte" },
-  { name: "Node.js", icon: "nodejs" },
-  { name: "HTML5", icon: "html" },
-  { name: "CSS3", icon: "css" },
-  { name: "n8n", icon: "n8n" },
-  { name: "Power Automate", icon: "powerautomate" },
-  { name: "Azure Logic Apps", icon: "azure" },
-  { name: "Zapier", icon: "zapier" },
-  { name: "REST API", icon: "api" },
-  { name: "GraphQL", icon: "graphql" },
-  { name: "Docker", icon: "docker" },
-  { name: "AWS", icon: "aws" },
-  { name: "Azure", icon: "azure" },
-  { name: "Vercel", icon: "vercel" },
-  { name: "Supabase", icon: "supabase" },
-  { name: "Git", icon: "git" },
-  { name: "GitHub", icon: "github" },
-  { name: "Linux", icon: "linux" },
-  { name: "PostgreSQL", icon: "database" },
-  { name: "MySQL", icon: "database" },
-  { name: "HubSpot", icon: "hubspot" },
-  { name: "Google Workspace", icon: "google" },
-];
-
-export const PROJECTS = [
-  {
-    id: 1,
-    title: "E-Commerce Platform",
-    description: "A full-featured online store with real-time inventory management, secure payments, and advanced analytics dashboard.",
-    tags: ["React", "Node.js", "PostgreSQL", "Stripe"],
-    github: "https://cindysbliss.com",
-    demo: "https://ecommerce-demo.com",
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "Task Management App",
-    description: "Collaborative project management tool with real-time updates, team workspaces, and integrations.",
-    tags: ["Next.js", "TypeScript", "Supabase"],
-    github: "https://github.com/yourusername/taskapp",
-    demo: "https://taskapp-demo.com",
-    featured: true,
-  },
-  {
-    id: 3,
-    title: "Weather Dashboard",
-    description: "Beautiful weather forecasting app with interactive maps, severe weather alerts, and location-based data.",
-    tags: ["React", "Tailwind", "OpenWeather API"],
-    github: "https://github.com/yourusername/weather",
-    demo: "https://weather-demo.com",
-    featured: false,
-  },
-  {
-    id: 4,
-    title: "Portfolio Generator",
-    description: "SaaS platform that helps developers create stunning portfolio websites in minutes with customizable templates.",
-    tags: ["Next.js", "Prisma", "Stripe"],
-    github: "https://github.com/yourusername/portfolio-gen",
-    demo: "https://portfolio-gen.com",
-    featured: true,
-  },
-  {
-    id: 5,
-    title: "Fitness Tracker",
-    description: "Mobile-first fitness app with workout logging, progress tracking, and social features.",
-    tags: ["React Native", "Firebase", "Redux"],
-    github: "https://github.com/yourusername/fitness",
-    demo: null,
-    featured: false,
-  },
-  {
-    id: 6,
-    title: "Code Snippet Manager",
-    description: "Personal knowledge base for developers to store, organize, and share code snippets with syntax highlighting.",
-    tags: ["Vue", "MongoDB", "Express"],
-    github: "https://github.com/yourusername/snippets",
-    demo: "https://snippets-demo.com",
-    featured: false,
-  },
+  { name: "TypeScript", icon: Terminal, category: "Language" },
+  { name: "React 19 / Next.js", icon: Code2, category: "Frontend" },
+  { name: "SvelteKit", icon: Globe, category: "Framework" },
+  { name: "n8n (Self-Hosted)", icon: Workflow, category: "Automation" },
+  { name: "Docker", icon: Container, category: "Infrastructure" },
+  { name: "Azure SQL Pools", icon: Database, category: "Backend" },
+  { name: "Python", icon: Terminal, category: "Backend" },
+  { name: "Tailwind CSS", icon: Layout, category: "Styling" },
 ];
 
 export const EXPERIENCE = [
   {
-    id: 1,
-    company: "Tech Innovators Inc.",
-    position: "Senior Frontend Engineer",
-    period: "2022 - Present",
-    description: "Leading frontend development for enterprise SaaS products. Architected and implemented micro-frontend solutions, reducing load times by 40%.",
-    highlights: [
-      "Led team of 5 developers",
-      "Migrated legacy codebase to React 19",
-      "Improved Core Web Vitals by 50%",
-    ],
+    company: "Ultimate Technologies Group",
+    role: "AV/IT Systems & Automation Specialist",
+    period: "Apr 2021 – Dec 2025",
+    description: "Designed a TypeScript logic engine to automate complex product bundling rules, replacing manual calculations. Deployed self-hosted n8n pipelines via Docker to sync data between Azure SQL Pools and HubSpot APIs."
   },
   {
-    id: 2,
-    company: "Digital Solutions Co.",
-    position: "Frontend Engineer",
-    period: "2020 - 2022",
-    description: "Built responsive web applications for Fortune 500 clients. Specialized in React ecosystem and modern JavaScript frameworks.",
-    highlights: [
-      "Delivered 15+ client projects",
-      "Implemented design system",
-      "Reduced bundle size by 60%",
-    ],
+    company: "TAVRN",
+    role: "Junior Full Stack Developer",
+    period: "Jan 2024 – Present",
+    description: "Collaborating in a strict CI/CD environment. Building responsive SvelteKit UI components and conducting code reviews to maintain repository health in a distributed team."
   },
   {
-    id: 3,
-    company: "StartupXYZ",
-    position: "Junior Frontend Developer",
-    period: "2018 - 2020",
-    description: "Developed and maintained customer-facing web applications. Collaborated with design and backend teams in agile environment.",
-    highlights: [
-      "Built reusable component library",
-      "Contributed to open source projects",
-      "Mentored junior developers",
-    ],
-  },
+    company: "United States Army",
+    role: "Section Leader / Veteran",
+    period: "Previous",
+    description: "Managed high-stress logistical missions and operational workflows. Developed the ability to break down large, ambiguous objectives into manageable, executable tasks."
+  }
 ];
 
-export const CONTACT_INFO = {
-  title: "Let's Work Together",
-  description: "Have a project in mind? I'm always open to discussing new opportunities, creative ideas, or partnership possibilities.",
-  successMessage: "Thanks for reaching out! I'll get back to you soon.",
-  errorMessage: "Oops! Something went wrong. Please try again.",
-};
+export const PROJECTS = [
+  {
+    title: "Sales Logic Engine",
+    description: "A centralized TypeScript & SQL engine that automates complex product bundling rules. Eliminates manual errors by programmatically validating sales quotes against inventory logic.",
+    tags: ["TypeScript", "SQL", "Logic", "Automation"],
+    link: "#", // If private, link to a detailed 'Case Study' page (see below)
+    featured: true,
+  },
+  {
+    title: "Enterprise Sync Pipeline",
+    description: "Self-hosted n8n infrastructure on Docker. Orchestrates bi-directional data syncs between HubSpot CRM and Azure SQL Pools, handling nested JSON parsing via custom JavaScript nodes.",
+    tags: ["n8n", "Docker", "Azure", "Webhooks"],
+    link: "#", 
+    featured: true,
+  },
+  {
+    title: "TAVRN Platform",
+    description: "Contributing to a modern social platform using SvelteKit. Focused on component modularity, strict linting adherence, and responsive UI implementation.",
+    tags: ["SvelteKit", "TypeScript", "Frontend"],
+    link: "https://tavrn.quest", 
+    featured: false,
+  },
+  {
+    title: "Azure Cloud Lab",
+    description: "Personal infrastructure lab managing virtual networks and AD administration, demonstrating cloud competency beyond just code.",
+    tags: ["Azure", "Cloud Admin", "Networking"],
+    link: "#",
+    featured: false,
+  }
+];

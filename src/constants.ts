@@ -1,0 +1,131 @@
+export const PROFILE = {
+  name: "Alex Morgan",
+  title: "Senior Frontend Engineer",
+  bio: "Crafting exceptional digital experiences with modern web technologies. Passionate about performance, accessibility, and user-centric design.",
+  availability: "Available for freelance",
+  email: "[email protected]",
+  location: "San Francisco, CA",
+  resumeUrl: "/resume.pdf",
+};
+
+export const SOCIALS = {
+  github: "https://github.com/yourusername",
+  linkedin: "https://linkedin.com/in/yourusername",
+  twitter: "https://twitter.com/yourusername",
+};
+
+export const TECH_STACK = [
+  { name: "React", icon: "react" },
+  { name: "TypeScript", icon: "typescript" },
+  { name: "JavaScript", icon: "javascript" },
+  { name: "Next.js", icon: "nextjs" },
+  { name: "Tailwind CSS", icon: "tailwind" },
+  { name: "Node.js", icon: "nodejs" },
+  { name: "Git", icon: "git" },
+  { name: "Figma", icon: "figma" },
+  { name: "Docker", icon: "docker" },
+  { name: "PostgreSQL", icon: "database" },
+];
+
+export const PROJECTS = [
+  {
+    id: 1,
+    title: "E-Commerce Platform",
+    description: "A full-featured online store with real-time inventory management, secure payments, and advanced analytics dashboard.",
+    tags: ["React", "Node.js", "PostgreSQL", "Stripe"],
+    github: "https://github.com/yourusername/ecommerce",
+    demo: "https://ecommerce-demo.com",
+    featured: true,
+  },
+  {
+    id: 2,
+    title: "Task Management App",
+    description: "Collaborative project management tool with real-time updates, team workspaces, and integrations.",
+    tags: ["Next.js", "TypeScript", "Supabase"],
+    github: "https://github.com/yourusername/taskapp",
+    demo: "https://taskapp-demo.com",
+    featured: true,
+  },
+  {
+    id: 3,
+    title: "Weather Dashboard",
+    description: "Beautiful weather forecasting app with interactive maps, severe weather alerts, and location-based data.",
+    tags: ["React", "Tailwind", "OpenWeather API"],
+    github: "https://github.com/yourusername/weather",
+    demo: "https://weather-demo.com",
+    featured: false,
+  },
+  {
+    id: 4,
+    title: "Portfolio Generator",
+    description: "SaaS platform that helps developers create stunning portfolio websites in minutes with customizable templates.",
+    tags: ["Next.js", "Prisma", "Stripe"],
+    github: "https://github.com/yourusername/portfolio-gen",
+    demo: "https://portfolio-gen.com",
+    featured: true,
+  },
+  {
+    id: 5,
+    title: "Fitness Tracker",
+    description: "Mobile-first fitness app with workout logging, progress tracking, and social features.",
+    tags: ["React Native", "Firebase", "Redux"],
+    github: "https://github.com/yourusername/fitness",
+    demo: null,
+    featured: false,
+  },
+  {
+    id: 6,
+    title: "Code Snippet Manager",
+    description: "Personal knowledge base for developers to store, organize, and share code snippets with syntax highlighting.",
+    tags: ["Vue", "MongoDB", "Express"],
+    github: "https://github.com/yourusername/snippets",
+    demo: "https://snippets-demo.com",
+    featured: false,
+  },
+];
+
+export const EXPERIENCE = [
+  {
+    id: 1,
+    company: "Tech Innovators Inc.",
+    position: "Senior Frontend Engineer",
+    period: "2022 - Present",
+    description: "Leading frontend development for enterprise SaaS products. Architected and implemented micro-frontend solutions, reducing load times by 40%.",
+    highlights: [
+      "Led team of 5 developers",
+      "Migrated legacy codebase to React 19",
+      "Improved Core Web Vitals by 50%",
+    ],
+  },
+  {
+    id: 2,
+    company: "Digital Solutions Co.",
+    position: "Frontend Engineer",
+    period: "2020 - 2022",
+    description: "Built responsive web applications for Fortune 500 clients. Specialized in React ecosystem and modern JavaScript frameworks.",
+    highlights: [
+      "Delivered 15+ client projects",
+      "Implemented design system",
+      "Reduced bundle size by 60%",
+    ],
+  },
+  {
+    id: 3,
+    company: "StartupXYZ",
+    position: "Junior Frontend Developer",
+    period: "2018 - 2020",
+    description: "Developed and maintained customer-facing web applications. Collaborated with design and backend teams in agile environment.",
+    highlights: [
+      "Built reusable component library",
+      "Contributed to open source projects",
+      "Mentored junior developers",
+    ],
+  },
+];
+
+export const CONTACT_INFO = {
+  title: "Let's Work Together",
+  description: "Have a project in mind? I'm always open to discussing new opportunities, creative ideas, or partnership possibilities.",
+  successMessage: "Thanks for reaching out! I'll get back to you soon.",
+  errorMessage: "Oops! Something went wrong. Please try again.",
+};

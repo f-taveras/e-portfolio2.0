@@ -1,17 +1,16 @@
 export const PROFILE = {
-  name: "Alex Morgan",
-  title: "Senior Frontend Engineer",
+  name: "Felix Taveras",
+  title: "Full-Stack Developer",
   bio: "Crafting exceptional digital experiences with modern web technologies. Passionate about performance, accessibility, and user-centric design.",
   availability: "Available for freelance",
-  email: "[email protected]",
-  location: "San Francisco, CA",
+  email: "Felixataveras1@gmail.com",
+  location: "North Carolina, New York, Remote",
   resumeUrl: "/resume.pdf",
 };
 
 export const SOCIALS = {
-  github: "https://github.com/yourusername",
-  linkedin: "https://linkedin.com/in/yourusername",
-  twitter: "https://twitter.com/yourusername",
+  github: "https://github.com/f-taveras",
+  linkedin: "https://linkedin.com/in/f-taveras",
 };
 
 export const TECH_STACK = [
@@ -33,7 +32,7 @@ export const PROJECTS = [
     title: "E-Commerce Platform",
     description: "A full-featured online store with real-time inventory management, secure payments, and advanced analytics dashboard.",
     tags: ["React", "Node.js", "PostgreSQL", "Stripe"],
-    github: "https://github.com/yourusername/ecommerce",
+    github: "https://cindysbliss.com",
     demo: "https://ecommerce-demo.com",
     featured: true,
   },

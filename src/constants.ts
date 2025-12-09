@@ -5,80 +5,130 @@ import {
   Globe, 
   Cpu, 
   Layout, 
-  Workflow, // Changed from Server to Workflow for n8n
-  Container // For Docker
+  Workflow, 
+  Container,
+  Server
 } from 'lucide-react';
 
-export const PERSONAL_INFO = {
+export const PROFILE = {
   name: "Felix A. Taveras",
   title: "Full Stack Developer & Automation Engineer",
-  bio: "U.S. Army Veteran and engineer who translates ambiguous business requirements into reliable, code-driven workflows. specialized in building TypeScript logic engines, self-hosted automation infrastructure (n8n/Docker), and scalable React systems.",
-  email: "Felixataveras1@gmail.com",
-  github: "https://github.com/f-taveras",
-  linkedin: "https://linkedin.com/in/your-profile-link", // Update if you have one
-  resumeUrl: "/assets/Felix_Taveras_Resume.pdf", 
+  bio: "U.S. Army Veteran and engineer who translates ambiguous business requirements into reliable, code-driven workflows. Specialized in building TypeScript logic engines, self-hosted automation infrastructure (n8n/Docker), and scalable React systems.",
   availability: "Open to Work",
+  email: "Felixataveras1@gmail.com",
+  location: "Raleigh-Durham, NC", // Updated based on Resume
+  resumeUrl: "/assets/Felix_Taveras_Resume.pdf", 
 };
 
-export const TECH_STACK = [
-  { name: "TypeScript", icon: Terminal, category: "Language" },
-  { name: "React 19 / Next.js", icon: Code2, category: "Frontend" },
-  { name: "SvelteKit", icon: Globe, category: "Framework" },
-  { name: "n8n (Self-Hosted)", icon: Workflow, category: "Automation" },
-  { name: "Docker", icon: Container, category: "Infrastructure" },
-  { name: "Azure SQL Pools", icon: Database, category: "Backend" },
-  { name: "Python", icon: Terminal, category: "Backend" },
-  { name: "Tailwind CSS", icon: Layout, category: "Styling" },
-];
+export const SOCIALS = {
+  github: "https://github.com/f-taveras",
+  linkedin: "https://linkedin.com/in/your-profile-link", // Update this when you have the link
+  twitter: "#", 
+};
 
-export const EXPERIENCE = [
-  {
-    company: "Ultimate Technologies Group",
-    role: "AV/IT Systems & Automation Specialist",
-    period: "Apr 2021 – Dec 2025",
-    description: "Designed a TypeScript logic engine to automate complex product bundling rules, replacing manual calculations. Deployed self-hosted n8n pipelines via Docker to sync data between Azure SQL Pools and HubSpot APIs."
-  },
-  {
-    company: "TAVRN",
-    role: "Junior Full Stack Developer",
-    period: "Jan 2024 – Present",
-    description: "Collaborating in a strict CI/CD environment. Building responsive SvelteKit UI components and conducting code reviews to maintain repository health in a distributed team."
-  },
-  {
-    company: "United States Army",
-    role: "Section Leader / Veteran",
-    period: "Previous",
-    description: "Managed high-stress logistical missions and operational workflows. Developed the ability to break down large, ambiguous objectives into manageable, executable tasks."
-  }
+// Mapped your specific tech stack to the Lucide icons
+export const TECH_STACK = [
+  { name: "TypeScript", icon: Terminal },
+  { name: "React 19", icon: Code2 },
+  { name: "SvelteKit", icon: Globe },
+  { name: "n8n", icon: Workflow },
+  { name: "Docker", icon: Container },
+  { name: "SQL / Azure", icon: Database },
+  { name: "Python", icon: Server },
+  { name: "AWS", icon: Cpu },
+  { name: "Tailwind CSS", icon: Layout },
 ];
 
 export const PROJECTS = [
   {
+    id: 1,
     title: "Sales Logic Engine",
     description: "A centralized TypeScript & SQL engine that automates complex product bundling rules. Eliminates manual errors by programmatically validating sales quotes against inventory logic.",
     tags: ["TypeScript", "SQL", "Logic", "Automation"],
-    link: "#", // If private, link to a detailed 'Case Study' page (see below)
+    github: "#", // Private Enterprise Code
+    demo: null,
     featured: true,
   },
   {
+    id: 2,
     title: "Enterprise Sync Pipeline",
     description: "Self-hosted n8n infrastructure on Docker. Orchestrates bi-directional data syncs between HubSpot CRM and Azure SQL Pools, handling nested JSON parsing via custom JavaScript nodes.",
     tags: ["n8n", "Docker", "Azure", "Webhooks"],
-    link: "#", 
+    github: "#", // Private Enterprise Code
+    demo: null, 
     featured: true,
   },
   {
+    id: 3,
     title: "TAVRN Platform",
     description: "Contributing to a modern social platform using SvelteKit. Focused on component modularity, strict linting adherence, and responsive UI implementation.",
     tags: ["SvelteKit", "TypeScript", "Frontend"],
-    link: "https://tavrn.quest", 
+    github: "#", 
+    demo: "https://tavrn.quest", 
+    featured: true,
+  },
+  {
+    id: 4,
+    title: "Cindy's Bliss SEO",
+    description: "E-commerce optimization project for a Shopify store. Improved SOA and SEO rankings through targeted keyword analysis and site performance tuning.",
+    tags: ["Shopify", "SEO", "Analytics", "E-commerce"],
+    github: "#",
+    demo: "https://cindysbliss.com", 
     featured: false,
   },
   {
+    id: 5,
     title: "Azure Cloud Lab",
     description: "Personal infrastructure lab managing virtual networks and AD administration, demonstrating cloud competency beyond just code.",
     tags: ["Azure", "Cloud Admin", "Networking"],
-    link: "#",
+    github: "#",
+    demo: null,
     featured: false,
   }
 ];
+
+export const EXPERIENCE = [
+  {
+    id: 1,
+    company: "Ultimate Technologies Group",
+    position: "AV/IT Systems & Automation Specialist",
+    period: "Apr 2021 – Dec 2025",
+    description: "Bridged the gap between hardware and software, creating internal tools to automate sales and support workflows.",
+    highlights: [
+      "Designed a TypeScript logic engine to replace manual sales calculations.",
+      "Deployed self-hosted n8n pipelines via Docker to sync Azure & HubSpot.",
+      "Wrote custom SQL procedures to validate data integrity across pipelines."
+    ],
+  },
+  {
+    id: 2,
+    company: "TAVRN",
+    position: "Junior Full Stack Developer",
+    period: "Jan 2024 – Present",
+    description: "Frontend development in a strictly version-controlled environment.",
+    highlights: [
+      "Built responsive SvelteKit UI components matching design specs.",
+      "Conducted code reviews to maintain repository health.",
+      "Collaborated in a distributed team environment."
+    ],
+  },
+  {
+    id: 3,
+    company: "United States Army",
+    position: "Section Leader / Veteran",
+    period: "Previous",
+    description: "Operational leadership in high-stress environments.",
+    highlights: [
+      "Broke down large logistical missions into manageable tasks.",
+      "Managed inventory and workflow efficiency under pressure.",
+      "Developed adaptability and disciplined problem-solving skills."
+    ],
+  },
+];
+
+export const CONTACT_INFO = {
+  title: "Let's Work Together",
+  description: "I am currently looking for roles where I can leverage my background in automation and full-stack development. Reach out if you need a problem solver.",
+  successMessage: "Thanks for reaching out! I'll get back to you soon.",
+  errorMessage: "Oops! Something went wrong. Please try again.",
+};

@@ -10,6 +10,7 @@ interface NasaApod {
 
 export function useNasaBackground() {
   const [backgroundUrl, setBackgroundUrl] = useState<string>('');
+  const [apodData, setApodData] = useState<NasaApod | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -29,6 +30,7 @@ export function useNasaBackground() {
         }
 
         const data: NasaApod = await response.json();
+        setApodData(data);
 
         if (data.media_type === 'image') {
           setBackgroundUrl(data.hdurl || data.url);
@@ -44,5 +46,5 @@ export function useNasaBackground() {
     fetchNasaImage();
   }, []);
 
-  return { backgroundUrl, isLoading, error };
+  return { backgroundUrl, apodData, isLoading, error };
 }

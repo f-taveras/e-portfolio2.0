@@ -5,9 +5,10 @@ import Projects from "./components/Projects";
 import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import NasaBanner from "./components/NasaBanner";
 
 function App() {
-  const { backgroundUrl, isLoading } = useNasaBackground();
+  const { backgroundUrl, apodData, isLoading } = useNasaBackground();
 
   return (
     <div className="min-h-screen bg-black text-white relative">
@@ -28,6 +29,9 @@ function App() {
         <Contact />
         <Footer />
       </div>
+      {!isLoading && apodData && (
+        <NasaBanner title={apodData.title} explanation={apodData.explanation} />
+      )}
     </div>
   );
 }

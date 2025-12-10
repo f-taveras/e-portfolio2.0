@@ -85,14 +85,6 @@ export default function Projects() {
                     ))}
                   </div>
                 </div>
-
-                {isFeatured && (
-                  <div className="absolute top-4 right-4 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
-                    <span className="text-xs text-emerald-500 font-medium">
-                      Featured
-                    </span>
-                  </div>
-                )}
               </motion.div>
             );
           })}

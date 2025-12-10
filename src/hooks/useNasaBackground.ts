@@ -16,9 +16,18 @@ export function useNasaBackground() {
   useEffect(() => {
     const fetchNasaImage = async () => {
       try {
-        const response = await fetch(
-          'https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY'
-        );
+        const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/nasa-apod`;
+
+        const response = await fetch(apiUrl, {
+          headers: {
+            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch NASA image');
+        }
+
         const data: NasaApod = await response.json();
 
         if (data.media_type === 'image') {
@@ -26,6 +35,7 @@ export function useNasaBackground() {
         }
         setIsLoading(false);
       } catch (err) {
+        console.error('Error loading NASA background:', err);
         setError('Failed to load NASA image');
         setIsLoading(false);
       }

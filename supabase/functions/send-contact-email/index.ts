@@ -76,7 +76,7 @@ Deno.serve(async (req: Request) => {
 
     try {
       const emailResult = await resend.emails.send({
-        from: 'Portfolio Contact <onboarding@resend.dev>',
+        from: 'Portfolio Contact <contact@milkyway.fit>',
         to: 'Felixataveras1@gmail.com',
         subject: `Portfolio Contact: ${name}`,
         html: `

@@ -40,13 +40,13 @@ export const TECH_STACK = [
 ];
 
 export const PROJECTS = [
-  {
+{
     id: 1,
-    title: "Sales Logic Engine",
-    description: "A centralized TypeScript & SQL engine that automates complex product bundling rules. Eliminates manual errors by programmatically validating sales quotes against inventory logic.",
-    tags: ["TypeScript", "SQL", "Logic", "Automation"],
-    github: "#", // Private Enterprise Code
-    demo: null,
+    title: "A/V Sales Estimation Engine",
+    description: "A comprehensive AV sales platform built with React 18 and Supabase. Features real-time estimate calculation, professional PDF generation, role-based access control (RBAC), and a drag-and-drop folder system for managing complex project proposals.",
+    tags: ["React", "TypeScript", "Supabase", "PostgreSQL", "Tailwind CSS", "PDF Gen"],
+    github: "https://github.com/f-taveras/UTG_sales_demo", 
+    demo: "https://appdemo1.milkyway.fit/", 
     featured: true,
   },
   {

@@ -16,14 +16,14 @@ export const PROFILE = {
   bio: "U.S. Army Veteran and engineer who translates ambiguous business requirements into reliable, code-driven workflows. Specialized in building TypeScript logic engines, self-hosted automation infrastructure (n8n/Docker), and scalable React systems.",
   availability: "Open to Work",
   email: "Felixataveras1@gmail.com",
-  location: "Raleigh-Durham, NC", // Updated based on Resume
-  resumeUrl: "/assets/Felix_Taveras_Resume.pdf", 
+  location: "Raleigh-Durham, NC", 
+  resumeUrl: "/assets/FelixTResume.docx", 
 };
 
 export const SOCIALS = {
   github: "https://github.com/f-taveras",
-  linkedin: "https://linkedin.com/in/your-profile-link", // Update this when you have the link
-  twitter: "#", 
+  linkedin: "https://linkedin.com/in/f-taveras", 
+   
 };
 
 // Mapped your specific tech stack to the Lucide icons

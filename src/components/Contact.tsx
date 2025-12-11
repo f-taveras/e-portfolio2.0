@@ -23,14 +23,38 @@ async function submitContactForm(
     };
   }
 
-  await new Promise((resolve) => setTimeout(resolve, 1500));
+  try {
+    const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-contact-email`;
 
-  console.log("Form submitted:", { name, email, message });
+    const response = await fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, email, message }),
+    });
 
-  return {
-    status: "success",
-    message: CONTACT_INFO.successMessage,
-  };
+    const data = await response.json();
+
+    if (!response.ok) {
+      return {
+        status: "error",
+        message: data.error || "Failed to send message. Please try again.",
+      };
+    }
+
+    return {
+      status: "success",
+      message: CONTACT_INFO.successMessage,
+    };
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    return {
+      status: "error",
+      message: "Failed to send message. Please check your connection and try again.",
+    };
+  }
 }
 
 export default function Contact() {

@@ -76,8 +76,8 @@ Deno.serve(async (req: Request) => {
 
     try {
       const emailResult = await resend.emails.send({
-        from: 'Portfolio Contact <[email protected]>',
-        to: '[email protected]',
+        from: 'Portfolio Contact <onboarding@resend.dev>',
+        to: 'Felixataveras1@gmail.com',
         subject: `Portfolio Contact: ${name}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

@@ -73,8 +73,9 @@ export const PROJECTS = [
     description: "E-commerce optimization project for a Shopify store. Improved SOA and SEO rankings through targeted keyword analysis and site performance tuning.",
     tags: ["Shopify", "SEO", "Analytics", "E-commerce"],
     github: "#",
-    demo: "https://cindysbliss.com", 
+    demo: "https://cindysbliss.com",
     featured: false,
+    status: "In Progress",
   },
   {
     id: 5,

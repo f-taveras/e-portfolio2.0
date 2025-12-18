@@ -67,9 +67,17 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-2">
-                    {project.title}
-                  </h3>
+                  <div className="flex items-center gap-2 mb-2">
+                    <h3 className="text-xl font-bold text-white">
+                      {project.title}
+                    </h3>
+                    {project.status && (
+                      <span className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 rounded-full">
+                        <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
+                        {project.status}
+                      </span>
+                    )}
+                  </div>
                   <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-grow">
                     {project.description}
                   </p>

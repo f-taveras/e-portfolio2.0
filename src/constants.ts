@@ -62,9 +62,9 @@ export const PROJECTS = [
     id: 3,
     title: "TAVRN Platform",
     description: "Contributing to a modern social platform using SvelteKit. Focused on component modularity, strict linting adherence, and responsive UI implementation.",
-    tags: ["SvelteKit", "TypeScript", "Frontend"],
-    github: "#", 
-    demo: "https://tavrn.quest", 
+    tags: ["SvelteKit", "TypeScript", "AWS", "Frontend"],
+    github: "#",
+    demo: "https://tavrn.quest",
     featured: true,
   },
   {

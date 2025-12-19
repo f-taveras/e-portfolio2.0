@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Download, MapPin, Github, Linkedin } from "lucide-react";
 import { PROFILE, SOCIALS } from "../constants";
-import profileImage from "../assets/1765428176770.jpg";
+import profileImage from "../assets/profilepic.png";
 
 export default function Hero() {
   return (
@@ -14,12 +14,12 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="relative w-52 h-52 md:w-64 md:h-64 flex-shrink-0 mx-auto md:mx-0"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 to-blue-500 rounded-full blur-2xl opacity-30" />
+            <div className="absolute inset-0 bg-emerald-500  rounded-full blur-2xl opacity-30" />
             <div className="relative w-full h-full rounded-full bg-gray-900 border-4 border-gray-800 shadow-2xl overflow-hidden">
               <img
                 src={profileImage}
                 alt={PROFILE.name}
-                className="w-full h-full object-cover"
+                className="     w-[100%] h-[100%] mt-2 "
               />
             </div>
           </motion.div>

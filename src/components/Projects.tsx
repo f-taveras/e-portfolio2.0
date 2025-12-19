@@ -22,19 +22,15 @@ export default function Projects() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
-          {PROJECTS.map((project, index) => {
-            const isFeatured = project.featured;
-            const spanClass = isFeatured ? "md:col-span-2" : "md:col-span-1";
-
-            return (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {PROJECTS.map((project, index) => (
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`group relative bg-gray-800/50 border border-gray-700/50 rounded-2xl p-6 hover:bg-gray-800 transition-all duration-300 ${spanClass}`}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+                className="group relative bg-gray-800/50 border border-gray-700/50 rounded-2xl p-6 hover:bg-gray-800 transition-all duration-300 flex flex-col"
               >
                 <div className="flex flex-col h-full">
                   <div className="flex items-start justify-between mb-4">
@@ -94,8 +90,7 @@ export default function Projects() {
                   </div>
                 </div>
               </motion.div>
-            );
-          })}
+          ))}
         </div>
       </div>
     </section>

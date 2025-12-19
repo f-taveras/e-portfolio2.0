@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Download, MapPin, Github, Linkedin } from "lucide-react";
 import { PROFILE, SOCIALS } from "../constants";
 import profileImage from "../assets/profilepic.png";
+import resumeFile from "../assets/FelixTResume.docx";
 
 export default function Hero() {
   return (
@@ -56,8 +57,8 @@ export default function Hero() {
 
             <div className="flex flex-wrap items-center gap-4 pt-4">
               <motion.a
-                href={PROFILE.resumeUrl}
-                download
+                href={resumeFile}
+                download="Felix_Taveras_Resume.docx"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-lg font-medium hover:bg-gray-200 transition-colors"

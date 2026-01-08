@@ -9,11 +9,7 @@ export default function Footer() {
           <p className="text-gray-400 text-sm">
             © {new Date().getFullYear()} {PROFILE.name}. All rights reserved.
           </p>
-          <div className="flex items-center gap-2 text-gray-400 text-sm">
-            <span>Built with</span>
-            <Heart className="w-4 h-4 text-red-500 fill-red-500" />
-            <span>using React 19 & Tailwind CSS</span>
-          </div>
+         
         </div>
       </div>
     </footer>

@@ -1,4 +1,10 @@
 import { useState, useEffect } from 'react';
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY
+);
 
 interface NasaApod {
   url: string;
@@ -18,7 +24,35 @@ export function useNasaBackground() {
   useEffect(() => {
     const fetchNasaImage = async (retries = 2) => {
       try {
-        // Call the edge function to get NASA APOD
+        const today = new Date().toISOString().split('T')[0];
+
+        // First, try to get cached image directly from database (much faster!)
+        const { data: cached, error: cacheError } = await supabase
+          .from('nasa_apod_cache')
+          .select('*')
+          .eq('date', today)
+          .maybeSingle();
+
+        if (cached && !cacheError) {
+          setApodData(cached);
+          const imageUrl = cached.hdurl || cached.url;
+
+          // Preload the image for instant display
+          const img = new Image();
+          img.onload = () => {
+            setBackgroundUrl(imageUrl);
+            setIsLoading(false);
+          };
+          img.onerror = () => {
+            // If preload fails, still set it and let browser handle it
+            setBackgroundUrl(imageUrl);
+            setIsLoading(false);
+          };
+          img.src = imageUrl;
+          return;
+        }
+
+        // If not cached, call the edge function to fetch from NASA API
         const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/nasa-apod`;
 
         const response = await fetch(apiUrl, {
@@ -36,10 +70,22 @@ export function useNasaBackground() {
         setApodData(nasaData);
 
         if (nasaData.media_type === 'image') {
-          setBackgroundUrl(nasaData.hdurl || nasaData.url);
-        }
+          const imageUrl = nasaData.hdurl || nasaData.url;
 
-        setIsLoading(false);
+          // Preload the image
+          const img = new Image();
+          img.onload = () => {
+            setBackgroundUrl(imageUrl);
+            setIsLoading(false);
+          };
+          img.onerror = () => {
+            setBackgroundUrl(imageUrl);
+            setIsLoading(false);
+          };
+          img.src = imageUrl;
+        } else {
+          setIsLoading(false);
+        }
       } catch (err) {
         console.error('Error loading NASA background:', err);
 
@@ -47,10 +93,15 @@ export function useNasaBackground() {
         if (retries > 0) {
           setTimeout(() => fetchNasaImage(retries - 1), 2000);
         } else {
-          // Use a fallback background from NASA's image library
-          setBackgroundUrl('https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg?auto=compress&cs=tinysrgb&w=1920');
-          setError('Using fallback background image');
-          setIsLoading(false);
+          // Use a fallback background
+          const fallbackUrl = 'https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg?auto=compress&cs=tinysrgb&w=1920';
+          const img = new Image();
+          img.onload = () => {
+            setBackgroundUrl(fallbackUrl);
+            setError('Using fallback background image');
+            setIsLoading(false);
+          };
+          img.src = fallbackUrl;
         }
       }
     };

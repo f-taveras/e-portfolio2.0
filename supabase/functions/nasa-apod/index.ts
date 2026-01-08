@@ -46,9 +46,24 @@ Deno.serve(async (req: Request) => {
     }
 
     const nasaApiKey = Deno.env.get('NASA_API_KEY') || 'DEMO_KEY';
-    const nasaResponse = await fetch(
-      `https://api.nasa.gov/planetary/apod?api_key=${nasaApiKey}`
-    );
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 8000);
+
+    let nasaResponse;
+    try {
+      nasaResponse = await fetch(
+        `https://api.nasa.gov/planetary/apod?api_key=${nasaApiKey}`,
+        { signal: controller.signal }
+      );
+      clearTimeout(timeoutId);
+    } catch (fetchError) {
+      clearTimeout(timeoutId);
+      if (fetchError.name === 'AbortError') {
+        throw new Error('NASA API request timed out');
+      }
+      throw fetchError;
+    }
 
     if (!nasaResponse.ok) {
       throw new Error(`NASA API error: ${nasaResponse.status}`);

@@ -16,7 +16,7 @@ export function useNasaBackground() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchNasaImage = async () => {
+    const fetchNasaImage = async (retries = 2) => {
       try {
         // Call the edge function to get NASA APOD
         const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/nasa-apod`;
@@ -28,7 +28,8 @@ export function useNasaBackground() {
         });
 
         if (!response.ok) {
-          throw new Error('Failed to fetch NASA image');
+          const errorData = await response.json().catch(() => ({}));
+          throw new Error(errorData.error || 'Failed to fetch NASA image');
         }
 
         const nasaData: NasaApod = await response.json();
@@ -41,8 +42,16 @@ export function useNasaBackground() {
         setIsLoading(false);
       } catch (err) {
         console.error('Error loading NASA background:', err);
-        setError('Failed to load NASA image');
-        setIsLoading(false);
+
+        // Retry on failure
+        if (retries > 0) {
+          setTimeout(() => fetchNasaImage(retries - 1), 2000);
+        } else {
+          // Use a fallback background from NASA's image library
+          setBackgroundUrl('https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg?auto=compress&cs=tinysrgb&w=1920');
+          setError('Using fallback background image');
+          setIsLoading(false);
+        }
       }
     };
 

@@ -22,86 +22,90 @@ export function useNasaBackground() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchNasaImage = async (retries = 2) => {
-      try {
-        const today = new Date().toISOString().split('T')[0];
+    const loadImageData = async () => {
+      const today = new Date().toISOString().split('T')[0];
 
-        // Check cache first for instant loading
-        const { data: cached } = await supabase
+      // Load cached data immediately (today's or most recent)
+      const loadFromCache = async () => {
+        // Try today's cache first
+        const { data: todayCache } = await supabase
           .from('nasa_apod_cache')
           .select('*')
           .eq('date', today)
           .maybeSingle();
 
-        if (cached) {
-          setApodData(cached);
-          const imageUrl = cached.hdurl || cached.url;
-          setBackgroundUrl(imageUrl);
-          setIsLoading(false);
-          return;
+        if (todayCache) {
+          return todayCache;
         }
 
-        // Not cached - call edge function (may be slow)
-        const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/nasa-apod`;
+        // Fall back to most recent cache
+        const { data: recentCache } = await supabase
+          .from('nasa_apod_cache')
+          .select('*')
+          .order('date', { ascending: false })
+          .limit(1)
+          .maybeSingle();
 
-        const response = await fetch(apiUrl, {
-          headers: {
-            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-          },
-        });
+        return recentCache;
+      };
 
-        if (!response.ok) {
-          const errorData = await response.json().catch(() => ({}));
-          throw new Error(errorData.error || 'Failed to fetch NASA image');
+      // Fetch fresh data from NASA API in background
+      const fetchFromNasa = async () => {
+        try {
+          const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/nasa-apod`;
+
+          const response = await fetch(apiUrl, {
+            headers: {
+              'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error('Failed to fetch from NASA');
+          }
+
+          const nasaData: NasaApod = await response.json();
+          return nasaData;
+        } catch (err) {
+          console.error('Error fetching from NASA API:', err);
+          return null;
         }
+      };
 
-        const nasaData: NasaApod = await response.json();
-        setApodData(nasaData);
+      // Load cache immediately
+      const cachedData = await loadFromCache();
+      if (cachedData) {
+        setApodData(cachedData);
+        const imageUrl = cachedData.hdurl || cachedData.url;
+        setBackgroundUrl(imageUrl);
+        setIsLoading(false);
+      }
 
-        if (nasaData.media_type === 'image') {
-          const imageUrl = nasaData.hdurl || nasaData.url;
-          setBackgroundUrl(imageUrl);
-          setIsLoading(false);
-        } else {
-          setIsLoading(false);
-        }
-      } catch (err) {
-        console.error('Error loading NASA background:', err);
-
-        // Retry on failure
-        if (retries > 0) {
-          setTimeout(() => fetchNasaImage(retries - 1), 2000);
-        } else {
-          // Try to use the most recent cached NASA image
-          const { data: recentCache } = await supabase
-            .from('nasa_apod_cache')
-            .select('*')
-            .order('date', { ascending: false })
-            .limit(1)
-            .maybeSingle();
-
-          if (recentCache) {
-            setApodData(recentCache);
-            const imageUrl = recentCache.hdurl || recentCache.url;
+      // Fetch from NASA in background - don't wait
+      fetchFromNasa().then((nasaData) => {
+        if (nasaData && nasaData.media_type === 'image') {
+          // Only update if it's different from cached data
+          if (!cachedData || cachedData.date !== nasaData.date) {
+            setApodData(nasaData);
+            const imageUrl = nasaData.hdurl || nasaData.url;
             setBackgroundUrl(imageUrl);
-            setError('Using cached NASA image from ' + recentCache.date);
-            setIsLoading(false);
-          } else {
-            // No cache available - use a fallback background
-            const fallbackUrl = 'https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg?auto=compress&cs=tinysrgb&w=1920';
-            const img = new Image();
-            img.onload = () => {
-              setBackgroundUrl(fallbackUrl);
-              setError('Using fallback background image');
-              setIsLoading(false);
-            };
-            img.src = fallbackUrl;
           }
         }
+      });
+
+      // If no cache, use fallback while waiting for NASA
+      if (!cachedData) {
+        const fallbackUrl = 'https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg?auto=compress&cs=tinysrgb&w=1920';
+        const img = new Image();
+        img.onload = () => {
+          setBackgroundUrl(fallbackUrl);
+          setIsLoading(false);
+        };
+        img.src = fallbackUrl;
       }
     };
 
-    fetchNasaImage();
+    loadImageData();
   }, []);
 
   return { backgroundUrl, apodData, isLoading, error };

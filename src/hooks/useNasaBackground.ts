@@ -72,15 +72,31 @@ export function useNasaBackground() {
         if (retries > 0) {
           setTimeout(() => fetchNasaImage(retries - 1), 2000);
         } else {
-          // Use a fallback background
-          const fallbackUrl = 'https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg?auto=compress&cs=tinysrgb&w=1920';
-          const img = new Image();
-          img.onload = () => {
-            setBackgroundUrl(fallbackUrl);
-            setError('Using fallback background image');
+          // Try to use the most recent cached NASA image
+          const { data: recentCache } = await supabase
+            .from('nasa_apod_cache')
+            .select('*')
+            .order('date', { ascending: false })
+            .limit(1)
+            .maybeSingle();
+
+          if (recentCache) {
+            setApodData(recentCache);
+            const imageUrl = recentCache.hdurl || recentCache.url;
+            setBackgroundUrl(imageUrl);
+            setError('Using cached NASA image from ' + recentCache.date);
             setIsLoading(false);
-          };
-          img.src = fallbackUrl;
+          } else {
+            // No cache available - use a fallback background
+            const fallbackUrl = 'https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg?auto=compress&cs=tinysrgb&w=1920';
+            const img = new Image();
+            img.onload = () => {
+              setBackgroundUrl(fallbackUrl);
+              setError('Using fallback background image');
+              setIsLoading(false);
+            };
+            img.src = fallbackUrl;
+          }
         }
       }
     };

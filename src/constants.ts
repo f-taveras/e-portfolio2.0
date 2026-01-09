@@ -54,7 +54,7 @@ export const PROJECTS = [
     title: "Enterprise Sync Pipeline",
     description: "Self-hosted n8n infrastructure on Docker. Orchestrates bi-directional data syncs between HubSpot CRM and Azure SQL Pools, handling nested JSON parsing via custom JavaScript nodes.",
     tags: ["n8n", "Docker", "Azure", "Webhooks"],
-    github: "#", // Private Enterprise Code
+    // github: "#", // Private Enterprise Code
     demo: null, 
     featured: true,
   },
@@ -63,7 +63,7 @@ export const PROJECTS = [
     title: "TAVRN Platform",
     description: "Contributing to a modern social platform using SvelteKit. Focused on component modularity, strict linting adherence, and responsive UI implementation.",
     tags: ["SvelteKit", "TypeScript", "AWS", "Frontend"],
-    github: "#",
+    // github: "#",
     demo: "https://tavrn.quest",
     featured: true,
   },
@@ -72,7 +72,7 @@ export const PROJECTS = [
     title: "Cindy's Bliss SEO",
     description: "E-commerce optimization project for a Shopify store. Improved SOA and SEO rankings through targeted keyword analysis and site performance tuning.",
     tags: ["Shopify", "SEO", "Analytics", "E-commerce"],
-    github: "#",
+    // github: "#",
     demo: "https://cindysbliss.com",
     featured: false,
     status: "In Progress",
@@ -82,7 +82,7 @@ export const PROJECTS = [
     title: "Azure Cloud Lab",
     description: "Personal infrastructure lab managing virtual networks and AD administration, demonstrating cloud competency beyond just code.",
     tags: ["Azure", "Cloud Admin", "Networking"],
-    github: "#",
+    // github: "#",
     demo: null,
     featured: false,
   }

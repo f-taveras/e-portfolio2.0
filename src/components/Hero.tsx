@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Download, MapPin, Github, Linkedin } from "lucide-react";
 import { PROFILE, SOCIALS } from "../constants";
-import profileImage from "../assets/profilepic.png";
+import profileImage from "../assets/profilegh.png";
 import resumeFile from "../assets/FelixTResume.docx";
 
 export default function Hero() {
@@ -20,7 +20,7 @@ export default function Hero() {
               <img
                 src={profileImage}
                 alt={PROFILE.name}
-                className="     w-[100%] h-[100%] mt-2 "
+                className="w-full h-full object-cover object-center"
               />
             </div>
           </motion.div>

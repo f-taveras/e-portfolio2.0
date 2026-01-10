@@ -27,7 +27,6 @@ export function useNasaBackground() {
 
       // Load cached data immediately (today's or most recent)
       const loadFromCache = async () => {
-        // Try today's cache first
         const { data: todayCache } = await supabase
           .from('nasa_apod_cache')
           .select('*')

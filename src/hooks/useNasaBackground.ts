@@ -60,13 +60,16 @@ export function useNasaBackground() {
           });
 
           if (!response.ok) {
-            throw new Error('Failed to fetch from NASA');
+            const errorMessage = 'Failed to fetch from NASA';
+            setError(errorMessage);
+            throw new Error(errorMessage);
           }
 
           const nasaData: NasaApod = await response.json();
           return nasaData;
         } catch (err) {
           console.error('Error fetching from NASA API:', err);
+          setError('Failed to fetch from NASA API.');
           return null;
         }
       };

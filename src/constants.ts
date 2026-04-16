@@ -17,7 +17,7 @@ export const PROFILE = {
   availability: "Open to Work",
   email: "Felixataveras1@gmail.com",
   location: "Raleigh-Durham, NC", 
-  resumeUrl: "/assets/FelixTResume.docx", 
+  resumeUrl: "/assets/Felixcv.docx", 
 };
 
 export const SOCIALS = {

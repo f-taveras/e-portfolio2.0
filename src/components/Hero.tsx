@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Download, MapPin, Github, Linkedin } from "lucide-react";
 import { PROFILE, SOCIALS } from "../constants";
 import profileImage from "../assets/profilegh.png";
-import resumeFile from "../assets/FTJresume.pdf";
+import resumeFile from "../assets/Felixcv.docx";
 
 export default function Hero() {
   return (

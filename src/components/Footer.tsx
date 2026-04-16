@@ -1,4 +1,3 @@
-import { Heart } from "lucide-react";
 import { PROFILE } from "../constants";
 
 export default function Footer() {

@@ -1,78 +1,9 @@
 import { motion } from "framer-motion";
-import {
-  Code2,
-  Database,
-  GitBranch,
-  Github,
-  Cloud,
-  Workflow,
-  Zap,
-  Terminal,
-  Braces,
-} from "lucide-react";
+import { Code2, type LucideIcon } from "lucide-react";
 import { TECH_STACK } from "../constants";
 
-function TechIcon({ icon }: { icon: string }) {
-  switch (icon) {
-    case "typescript":
-      return <span className="text-2xl font-bold text-blue-500">TS</span>;
-    case "javascript":
-      return <span className="text-2xl font-bold text-yellow-500">JS</span>;
-    case "python":
-      return <span className="text-2xl">🐍</span>;
-    case "sql":
-      return <Database className="w-6 h-6 text-blue-400" />;
-    case "bash":
-      return <Terminal className="w-6 h-6 text-green-400" />;
-    case "powershell":
-      return <Terminal className="w-6 h-6 text-blue-400" />;
-    case "nextjs":
-      return <span className="text-2xl">▲</span>;
-    case "react":
-      return <span className="text-2xl">⚛️</span>;
-    case "svelte":
-      return <span className="text-2xl">🔥</span>;
-    case "nodejs":
-      return <span className="text-2xl text-green-500">⬢</span>;
-    case "html":
-      return <span className="text-2xl">🌐</span>;
-    case "css":
-      return <span className="text-2xl">🎨</span>;
-    case "n8n":
-      return <Workflow className="w-6 h-6 text-pink-400" />;
-    case "powerautomate":
-      return <Workflow className="w-6 h-6 text-blue-400" />;
-    case "azure":
-      return <Cloud className="w-6 h-6 text-blue-500" />;
-    case "zapier":
-      return <Zap className="w-6 h-6 text-orange-400" />;
-    case "api":
-      return <Braces className="w-6 h-6 text-green-400" />;
-    case "graphql":
-      return <span className="text-2xl text-pink-500 font-bold">GQL</span>;
-    case "docker":
-      return <span className="text-2xl">🐳</span>;
-    case "aws":
-      return <Cloud className="w-6 h-6 text-orange-400" />;
-    case "vercel":
-      return <span className="text-2xl">▲</span>;
-    case "supabase":
-      return <Database className="w-6 h-6 text-emerald-400" />;
-    case "git":
-      return <GitBranch className="w-6 h-6 text-orange-400" />;
-    case "github":
-      return <Github className="w-6 h-6 text-gray-400" />;
-    case "linux":
-      return <span className="text-2xl">🐧</span>;
-    case "database":
-      return <Database className="w-6 h-6 text-gray-400" />;
-    case "hubspot":
-      return <span className="text-2xl">🟠</span>;
-    case "google":
-      return <span className="text-2xl">📧</span>;
-    default:
-      return <Code2 className="w-6 h-6 text-gray-400" />;
-  }
+function TechIcon({ icon: Icon }: { icon: LucideIcon }) {
+  return <Icon className="w-6 h-6 text-gray-400" />;
 }
 
 export default function TechStack() {

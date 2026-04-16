@@ -9,7 +9,7 @@ type FormState = {
 };
 
 async function submitContactForm(
-  prevState: FormState,
+  _prevState: FormState,
   formData: FormData
 ): Promise<FormState> {
   const name = formData.get("name") as string;
@@ -58,10 +58,13 @@ async function submitContactForm(
 }
 
 export default function Contact() {
-  const [state, formAction, isPending] = useActionState(submitContactForm, {
-    status: "idle",
-    message: "",
-  });
+  const [state, formAction, isPending] = useActionState<FormState, FormData>(
+    submitContactForm,
+    {
+      status: "idle",
+      message: "",
+    }
+  );
 
   return (
     <section className="py-20 px-4">
